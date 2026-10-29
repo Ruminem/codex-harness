@@ -4,7 +4,7 @@ A short `AGENTS.md` for running Codex CLI on a time-boxed coding task, where the
 
 It covers three things:
 - **Environment**: bind servers to 0.0.0.0, kill only processes you started (by PID), ask before memory-heavy work or irreversible commands, never update Codex or `git push`.
-- **How to work**: don't guess, show a short plan before multi-file changes, list every place a change must reach, prefer what already exists, never cut validation, data-loss handling or security, fix root causes, keep edits minimal, leave one small test that actually fails when broken, cite external code.
+- **How to work**: don't guess, show a short plan before multi-file changes, list every place a change must reach, prefer what already exists, never cut validation, data-loss handling or security, fix root causes and stop to rethink after three failed fixes, keep edits minimal, leave one small test that actually fails when broken, check every task requirement against evidence before calling it done, cite external code.
 - **What to leave behind**: one local commit per feature, one line per decision in `DECISIONS.md` (including how it was verified), an up-to-date `README.md` with run steps and how to verify it works (commands + expected result), and a closing line on every reply naming what was skipped or left unchecked.
 
 ## Use
@@ -21,7 +21,7 @@ The file itself is written in Korean.
 
 ## License
 
-Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichGebert/ponytail) (MIT); see `THIRD_PARTY_NOTICES.md`.
+Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichGebert/ponytail) and [superpowers](https://github.com/obra/superpowers) (both MIT); see `THIRD_PARTY_NOTICES.md`.
 
 ---
 
@@ -31,7 +31,7 @@ Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichG
 
 세 가지를 다룸.
 - **환경**: 서버는 0.0.0.0 에 띄움, 프로세스는 직접 띄운 것만 PID 로 끔, 메모리를 크게 쓰는 일과 되돌릴 수 없는 명령은 먼저 물음, Codex 업데이트와 `git push` 는 안 함
-- **일하는 법**: 짐작하지 않음, 여러 파일을 고치기 전에 짧은 계획을 보임, 변경이 닿아야 할 곳을 다 적음, 이미 있는 것을 먼저 씀, 입력 검증·데이터 유실 처리·보안은 줄이지 않음, 원인을 고침, 고칠 자리만 고침, 깨지면 실제로 실패하는 작은 테스트를 하나 남김, 외부 코드는 출처를 남김
+- **일하는 법**: 짐작하지 않음, 여러 파일을 고치기 전에 짧은 계획을 보임, 변경이 닿아야 할 곳을 다 적음, 이미 있는 것을 먼저 씀, 입력 검증·데이터 유실 처리·보안은 줄이지 않음, 원인을 고침, 세 번 고쳐도 안 되면 멈추고 다시 봄, 고칠 자리만 고침, 깨지면 실제로 실패하는 작은 테스트를 하나 남김, 끝났다고 하기 전에 요구사항을 항목마다 증거로 확인함, 외부 코드는 출처를 남김
 - **남기는 것**: 기능마다 로컬 커밋 하나, 결정마다 `DECISIONS.md` 한 줄(어떻게 확인했는지 포함), 실행 방법과 동작 확인 방법(명령 + 기대 결과)이 늘 최신인 `README.md`, 답마다 끝에 건너뛴 것·확인 안 한 것 한두 줄
 
 ## 쓰는 법
@@ -46,4 +46,4 @@ mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # 전역
 
 ## 라이선스
 
-Apache-2.0. 몇 줄은 [ponytail](https://github.com/DietrichGebert/ponytail)(MIT)에서 옮겨 고쳤음 — `THIRD_PARTY_NOTICES.md` 참고
+Apache-2.0. 몇 줄은 [ponytail](https://github.com/DietrichGebert/ponytail)·[superpowers](https://github.com/obra/superpowers)(둘 다 MIT)에서 옮겨 고쳤음 — `THIRD_PARTY_NOTICES.md` 참고
