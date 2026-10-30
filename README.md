@@ -1,5 +1,12 @@
 # codex-harness
 
+**In short**
+- The heart of this repo is one file, `AGENTS.md`: a list of rules for an AI that writes code.
+- Codex, an AI coding tool, reads this file before it starts working and follows what it says.
+- The rules come down to three: ask before running commands that could break things, check instead of guessing, and write down what was decided and why.
+- It was made for timed coding tasks where how you worked is judged along with the result.
+- To use it, download this repo and copy `AGENTS.md` to where Codex looks for it (see Use below).
+
 A short `AGENTS.md` for running Codex CLI on a time-boxed coding task, where the process (conversation, git log, diff, tests) is reviewed along with the result.
 
 It covers three things:
@@ -39,6 +46,13 @@ Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichG
 ---
 
 # codex-harness (한국어)
+
+**한눈에 보기**
+- 이 저장소의 핵심은 파일 하나(`AGENTS.md`)임. 코드를 짜는 AI 가 지킬 규칙을 적은 목록임
+- Codex 라는 AI 코딩 도구는 일을 시작하기 전에 이 파일을 읽고 적힌 대로 움직임
+- 규칙은 크게 셋임: 컴퓨터를 망가뜨릴 수 있는 명령은 먼저 묻기, 짐작하지 말고 확인하기, 무엇을 왜 정했는지 적어 두기
+- 결과뿐 아니라 일한 과정까지 보는 시간 제한 코딩 과제를 위해 만들었음
+- 쓰려면 이 저장소를 내려받아 `AGENTS.md` 를 Codex 가 찾는 자리에 복사하면 됨(아래 `쓰는 법`)
 
 시간 제한이 있는 코딩 과제에서 Codex CLI 에 주는 짧은 `AGENTS.md` 임. 결과물뿐 아니라 과정(대화·git log·diff·테스트)도 검토되는 자리를 전제로 함.
 
