@@ -17,11 +17,13 @@ It covers three things:
 ## Use
 
 ```sh
-git clone https://github.com/Ruminem/codex-harness
-mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # global
-# or: cp codex-harness/AGENTS.md ./AGENTS.md                          # project root
-cp codex-harness/templates/DECISIONS.md ./DECISIONS.md                # decision log skeleton
+git clone https://github.com/Ruminem/codex-harness ~/codex-harness     # outside the task folder
+mkdir -p ~/.codex && cp ~/codex-harness/AGENTS.md ~/.codex/AGENTS.md   # global
+# or: cp ~/codex-harness/AGENTS.md ./AGENTS.md                         # project root
+cp ~/codex-harness/templates/DECISIONS.md ./DECISIONS.md               # decision log skeleton
 ```
+
+Clone it outside the task folder. Inside it, `git add -A` records the clone as an embedded repository in your commits, and this repo's own decision log (the root `DECISIONS.md`) sits next to yours. If only the task folder is writable, run `echo codex-harness/ >> .git/info/exclude` there.
 
 `templates/DECISIONS.md` is an empty skeleton (sections only, no answers): questions asked, one entry per judgment fork, Codex output that was changed or rejected, verification, remaining limits.
 
@@ -64,11 +66,13 @@ Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichG
 ## 쓰는 법
 
 ```sh
-git clone https://github.com/Ruminem/codex-harness
-mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # 전역
-# 또는: cp codex-harness/AGENTS.md ./AGENTS.md                         # 프로젝트 루트
-cp codex-harness/templates/DECISIONS.md ./DECISIONS.md                # 결정 기록 뼈대
+git clone https://github.com/Ruminem/codex-harness ~/codex-harness     # 과제 폴더 밖
+mkdir -p ~/.codex && cp ~/codex-harness/AGENTS.md ~/.codex/AGENTS.md   # 전역
+# 또는: cp ~/codex-harness/AGENTS.md ./AGENTS.md                        # 프로젝트 루트
+cp ~/codex-harness/templates/DECISIONS.md ./DECISIONS.md               # 결정 기록 뼈대
 ```
+
+과제 폴더 밖에 받음. 안에 받으면 `git add -A` 가 이 저장소를 하위 저장소 링크로 과제 커밋에 넣고, 이 저장소 자체의 결정 기록(루트 `DECISIONS.md`)이 내 것 옆에 하나 더 생김. 과제 폴더에만 쓸 수 있으면 거기서 `echo codex-harness/ >> .git/info/exclude` 를 침.
 
 `templates/DECISIONS.md` 는 답이 없는 빈 뼈대임(절만 있음): 물어본 것, 갈림길마다 한 항목, Codex 가 낸 것 중 고치거나 버린 것, 검증, 남은 한계.
 
