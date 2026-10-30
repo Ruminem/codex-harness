@@ -19,6 +19,16 @@ Start `codex` and ask it to list three rules from `AGENTS.md` to confirm it was 
 
 The file itself is written in Korean.
 
+## Approval workflow and verification
+
+Read-only investigation comes first. Once enough information is available, explain the facts, unknowns, why the information matters, what it enables, and the proposed next action; then wait for approval. After that approval, present the files and impact, behavior, chosen approach and alternatives, validation, and exclusions; wait for a separate explicit design approval before implementation. Showing a plan alone is insufficient.
+
+Answers, supplied material, and silence do not count as approval. Approval applies only to the presented stage and scope. Obtain approval for changes to that scope; continue routine work within the approved implementation scope without asking again. The user may explicitly waive a particular approval stage. Before approval, only read-only investigation and proposals in the conversation are allowed; file edits, implementation, commits, and settings changes wait.
+
+For global installation on an existing PC, back up `~/.codex/AGENTS.md` to a unique filename before using the copy command above. This installs global user instructions. It does not replace the system prompt or prove that an existing session reloaded the file.
+
+In a fresh Codex session, request information gathering only. Expect an information report and an approval request without file edits. Approve that report: expect a design proposal and another approval request without implementation. Supply extra information without approving: expect implementation to remain pending. Explicitly approve the design: implementation may proceed within that scope. These are manual behavioral checks; static text checks cannot guarantee model compliance.
+
 ## License
 
 Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichGebert/ponytail) and [superpowers](https://github.com/obra/superpowers) (both MIT); see `THIRD_PARTY_NOTICES.md`.
@@ -43,6 +53,47 @@ mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # 전역
 ```
 
 `codex` 를 띄우고 `AGENTS.md` 에서 읽은 규칙 세 개를 말해 보라고 하면 실렸는지 확인됨.
+
+## 승인 절차와 동작 확인 방법
+
+읽기 전용 조사 → 정보의 필요성·가능한 작업·다음 행동 보고 → 정보 수집 결과 승인 → 파일·영향 범위·처리 규칙·방법과 대안·검증·제외 범위 설계 제시 → 별도 설계 승인 → 승인 범위 구현 순서로 진행함. 계획을 보여 주는 것만으로 승인을 대신하지 않음.
+
+추가 답변·자료·침묵은 승인이 아님. 승인은 제시한 단계와 범위에만 적용하고, 범위를 바꿀 때 다시 승인받음. 승인 범위 안의 통상 작업에는 매번 재승인을 요구하지 않음. 사용자가 특정 승인 단계를 명시적으로 생략할 수 있음. 승인 전에는 읽기 전용 조사·대화 속 제안만 하고, 파일 수정·구현·커밋·설정 적용은 기다림.
+
+이 PC에 전역 적용할 때는 기존 `~/.codex/AGENTS.md`를 겹치지 않는 파일명으로 백업한 뒤 위 복사 명령을 실행함. 적용 대상은 전역 사용자 지침이며, 시스템 프롬프트 교체나 실행 중 세션의 재로딩을 뜻하지 않음.
+
+PowerShell에서 정적 문구 검사와 의도적 누락 검사를 실행함:
+
+```powershell
+$rules = Get-Content -LiteralPath .\AGENTS.md -Raw -Encoding UTF8
+$required = @('정보 수집 승인', '설계 승인', '각 정보가 필요한 이유', '계획을 보여 주는 것만으로 승인을 대신하지 않는다', '질문에 대한 답변·자료 전달·침묵은 승인으로 간주하지 않는다', '승인 전 작업', '사용자가 특정 승인 단계를 명시적으로 생략', '매 작업마다 재승인을 요구하지 않는다')
+function Test-ApprovalRules([string]$text) {
+    foreach ($phrase in $required) {
+        if (-not $text.Contains($phrase)) { return $false }
+    }
+    return $true
+}
+Test-ApprovalRules $rules
+Test-ApprovalRules ($rules.Replace('설계 승인', ''))
+git diff --check
+```
+
+기대 결과는 차례로 `True`, `False`이며, `git diff --check`는 출력 없이 종료 0이어야 함. 두 번째 검사는 메모리의 문자열만 바꾸므로 원본 파일은 수정하지 않음. 문구의 존재를 검사할 뿐 모델 행동을 보장하지는 않음.
+
+전역 적용 후 동일 내용인지 확인함:
+
+```powershell
+(Get-FileHash .\AGENTS.md).Hash -eq (Get-FileHash "$env:USERPROFILE\.codex\AGENTS.md").Hash
+```
+
+기대 결과는 `True`임. 새 Codex 세션에서 다음 수동 확인도 수행함:
+
+1. 정보 수집만 요청 → 필요성·가능한 작업·다음 행동 보고와 승인 요청, 파일 변경 없음.
+2. 정보 수집 결과만 승인 → 설계 제시와 별도 승인 요청, 구현 없음.
+3. 추가 자료만 전달 → 구현 승인으로 취급하지 않고 승인 대기.
+4. 설계를 명시적으로 승인 → 승인 범위 안에서 구현 진행.
+
+이 수동 확인은 별도 새 세션이 필요하며, 파일 일치나 정적 문구 검사로 대체되지 않음. 실제 수행 여부와 한계는 `DECISIONS.md`에 기록함.
 
 ## 라이선스
 
