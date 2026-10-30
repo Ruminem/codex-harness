@@ -13,7 +13,10 @@ It covers three things:
 git clone https://github.com/Ruminem/codex-harness
 mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # global
 # or: cp codex-harness/AGENTS.md ./AGENTS.md                          # project root
+cp codex-harness/templates/DECISIONS.md ./DECISIONS.md                # decision log skeleton
 ```
+
+`templates/DECISIONS.md` is an empty skeleton (sections only, no answers): questions asked, one entry per judgment fork, Codex output that was changed or rejected, verification, remaining limits.
 
 Start `codex` and ask it to list three rules from `AGENTS.md` to confirm it was loaded.
 
@@ -50,7 +53,10 @@ Apache-2.0. A few lines are adapted from [ponytail](https://github.com/DietrichG
 git clone https://github.com/Ruminem/codex-harness
 mkdir -p ~/.codex && cp codex-harness/AGENTS.md ~/.codex/AGENTS.md   # 전역
 # 또는: cp codex-harness/AGENTS.md ./AGENTS.md                         # 프로젝트 루트
+cp codex-harness/templates/DECISIONS.md ./DECISIONS.md                # 결정 기록 뼈대
 ```
+
+`templates/DECISIONS.md` 는 답이 없는 빈 뼈대임(절만 있음): 물어본 것, 갈림길마다 한 항목, Codex 가 낸 것 중 고치거나 버린 것, 검증, 남은 한계.
 
 `codex` 를 띄우고 `AGENTS.md` 에서 읽은 규칙 세 개를 말해 보라고 하면 실렸는지 확인됨.
 
