@@ -25,7 +25,7 @@ cp ~/codex-harness/templates/DECISIONS.md ./DECISIONS.md               # decisio
 
 Clone it outside the task folder. Inside it, `git add -A` records the clone as an embedded repository in your commits, and this repo's own decision log (the root `DECISIONS.md`) sits next to yours. If only the task folder is writable, run `echo codex-harness/ >> .git/info/exclude` there.
 
-`templates/DECISIONS.md` is an empty skeleton (sections only, no answers): questions asked, one entry per judgment fork, Codex output that was changed or rejected, verification, remaining limits.
+`templates/DECISIONS.md` is an empty skeleton (sections only, no answers): how it works in three lines of your own, questions asked, one entry per judgment fork, what you decided versus what you left to Codex, Codex output that was changed or rejected, verification, remaining limits. You write "how it works" and "decided versus left to Codex" yourself; Codex leaves them blank and only points out where your description differs from the code.
 
 **The root `DECISIONS.md` is not the template.** It is this repo's own, already filled-in log of why the approval steps were added and how they were checked. Copy the one in `templates/`.
 
@@ -76,7 +76,7 @@ cp ~/codex-harness/templates/DECISIONS.md ./DECISIONS.md               # 결정 
 
 과제 폴더 밖에 받음. 안에 받으면 `git add -A` 가 이 저장소를 하위 저장소 링크로 과제 커밋에 넣고, 이 저장소 자체의 결정 기록(루트 `DECISIONS.md`)이 내 것 옆에 하나 더 생김. 과제 폴더에만 쓸 수 있으면 거기서 `echo codex-harness/ >> .git/info/exclude` 를 침.
 
-`templates/DECISIONS.md` 는 답이 없는 빈 뼈대임(절만 있음): 물어본 것, 갈림길마다 한 항목, Codex 가 낸 것 중 고치거나 버린 것, 검증, 남은 한계.
+`templates/DECISIONS.md` 는 답이 없는 빈 뼈대임(절만 있음): 내 말로 쓴 핵심 동작 세 줄, 물어본 것, 갈림길마다 한 항목, 내가 정한 것과 Codex 에 맡긴 것, Codex 가 낸 것 중 고치거나 버린 것, 검증, 남은 한계. 핵심 동작과 내가 정한 것·맡긴 것은 사람이 직접 쓰고, Codex 는 비워 둔 채 사람이 쓴 설명이 코드와 다른 곳만 짚음.
 
 **루트의 `DECISIONS.md` 는 양식이 아님.** 이 저장소에 승인 절차를 넣을 때 왜 그렇게 했고 어떻게 확인했는지 적은, 이미 채워진 기록임. 복사할 것은 `templates/` 쪽임.
 
